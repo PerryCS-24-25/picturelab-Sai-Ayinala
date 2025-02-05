@@ -11,8 +11,10 @@ public class PictureTester {
      * Method to test the PictureExplorer
      */
     public static void testExplorer() {
-        Picture beach = new Picture("beach.jpg");
-        beach.explore();   
+        Picture p = new Picture("BlendedSunsets.jpg");
+        Picture smallP = p.scale(0.25,0.25);
+        smallP.write("smallMyPicture.jpg");
+        p.explore();   
     }
 
     /**
