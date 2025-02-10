@@ -125,19 +125,108 @@ public class Picture extends SimplePicture {
             }
         }
     }
+    
+    /**
+     * Method keeps only the blue value
+     */
+    public void  keepOnlyBlue() {
+        Pixel[][] pixels = this.getPixels2D();
+        for (Pixel[] rowArray : pixels) {
+            for (Pixel pixelObj : rowArray) {
+                pixelObj.setGreen(0);
+                pixelObj.setRed(0);
+            }
+        }
+    }
+
+    /**
+     * Method keeps only the blue value
+     */
+    public void  keepOnlyRed() {
+        Pixel[][] pixels = this.getPixels2D();
+        for (Pixel[] rowArray : pixels) {
+            for (Pixel pixelObj : rowArray) {
+                pixelObj.setGreen(0);
+                pixelObj.setBlue(0);
+            }
+        }
+    }
+
+    /**
+     * Method keeps only the blue value
+     */
+    public void  keepOnlyGreen() {
+        Pixel[][] pixels = this.getPixels2D();
+        for (Pixel[] rowArray : pixels) {
+            for (Pixel pixelObj : rowArray) {
+                pixelObj.setBlue(0);
+                pixelObj.setRed(0);
+            }
+        }
+    }
+    
 
     /**
      * Removes all the red from this image.
      */
     public void zeroRed() {
-        //TODO: Write this method.
+        Pixel[][] pixels = this.getPixels2D();
+        for (Pixel[] rowArray : pixels) {
+            for (Pixel pixelObj : rowArray) {
+                pixelObj.setRed(0);
+            }
+        }
     }
 
     /**
      * Removes all the green from this image.
      */
     public void zeroGreen() {
-        //TODO: Write this method.   
+        Pixel[][] pixels = this.getPixels2D();
+        for (Pixel[] rowArray : pixels) {
+            for (Pixel pixelObj : rowArray) {
+                pixelObj.setGreen(0);
+            }
+        }   
+    }
+
+    public void negate() {
+        Pixel[][] pixels = this.getPixels2D();
+        for (Pixel[] rowArray : pixels) {
+            for (Pixel pixelObj : rowArray) {
+                pixelObj.setBlue( 255 - pixelObj.getBlue() );
+                pixelObj.setRed( 255 - pixelObj.getRed());
+                pixelObj.setGreen( 255 - pixelObj.getGreen());
+            }
+        }   
+    }
+
+    public void grayscale() {
+        Pixel[][] pixels = this.getPixels2D();
+        for (Pixel[] rowArray : pixels) {
+            for (Pixel pixelObj : rowArray) {
+                int averages = pixelObj.getBlue() + pixelObj.getGreen() + pixelObj.getRed(); 
+                pixelObj.setBlue( averages);
+                pixelObj.setRed( averages);
+                pixelObj.setGreen( averages);
+            }
+        }   
+    }
+
+    public void fixUnderwater(){
+        Pixel[][] pixels = this.getPixels2D();
+        int Min = pixels[0][0].getRed();
+        int Max = pixels[0][0].getRed(); 
+        for (Pixel[] rowArray : pixels) {
+            for (Pixel pixelObj : rowArray) {
+              if(pixelObj.getRed() > Max){
+                 Max = pixelObj.getRed();
+              }  
+              if(pixelObj.getRed() < Max){
+                Max = pixelObj.getRed();
+             }  
+            }
+        }    
     }
 
     /**
@@ -271,3 +360,4 @@ public class Picture extends SimplePicture {
     }
 
 } // this } is the end of class Picture, put all new methods before this
+//keepOnlyGreen
