@@ -98,7 +98,7 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
      * color shown in the swatch
      */
     private Color swatchColor;
-
+    //setUpMenuBar
     // menu components
     /**
      * menu bar
@@ -151,11 +151,19 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
      * the zoom factor (amount to zoom)
      */
     private double zoomFactor;
-
+    //  
     /**
      * the number system to use, 0 means starting at 0, 1 means starting at 1
      */
     private int numberBase = 0;
+
+    private JMenu File;
+
+    private JMenuItem Open;
+
+    private JMenuItem Save;
+
+    private JMenuItem Close;
 
     /**
      * Public constructor
@@ -217,7 +225,6 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
         pictureFrame.setFocusTraversalPolicy(newPolicy);
 
     }
-
     /**
      * Method to create the menu bar, menus, and menu items
      */
@@ -234,6 +241,11 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
         twoHundred = new JMenuItem("200%");
         fiveHundred = new JMenuItem("500%");
 
+        File = new JMenu("File");
+        Open = new JMenuItem("Open");
+        Save = new JMenuItem("Save");
+        Close = new JMenuItem("Close");
+
         // add the action listeners
         twentyFive.addActionListener(this);
         fifty.addActionListener(this);
@@ -242,6 +254,9 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
         hundredFifty.addActionListener(this);
         twoHundred.addActionListener(this);
         fiveHundred.addActionListener(this);
+        Open.addActionListener(this);
+        Save.addActionListener(this);
+        Close.addActionListener(this);
 
         // add the menu items to the menus
         zoomMenu.add(twentyFive);
@@ -252,7 +267,11 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
         zoomMenu.add(twoHundred);
         zoomMenu.add(fiveHundred);
         menuBar.add(zoomMenu);
-
+        File.add(Open);
+        File.add(Save);
+        File.add(Close);
+        menuBar.add(File);
+      //actionPerformed
         // set the menu bar to this menu
         pictureFrame.setJMenuBar(menuBar);
     }
