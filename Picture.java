@@ -215,18 +215,22 @@ public class Picture extends SimplePicture {
 
     public void fixUnderwater(){
         Pixel[][] pixels = this.getPixels2D();
-        int Min = pixels[0][0].getRed();
-        int Max = pixels[0][0].getRed(); 
+        int Minn = pixels[0][0].getRed();
+        int Max = pixels[0][0].getRed();
+        int scale; 
+        //Find the lowest and higest red value 
         for (Pixel[] rowArray : pixels) {
             for (Pixel pixelObj : rowArray) {
               if(pixelObj.getRed() > Max){
                  Max = pixelObj.getRed();
               }  
-              if(pixelObj.getRed() < Max){
-                Max = pixelObj.getRed();
+              if(pixelObj.getRed() < Minn){
+                Minn = pixelObj.getRed();
              }  
             }
-        }    
+        } 
+        scale = 255/(Max - Minn);
+        
     }
 
     /**
