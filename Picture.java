@@ -205,7 +205,7 @@ public class Picture extends SimplePicture {
         Pixel[][] pixels = this.getPixels2D();
         for (Pixel[] rowArray : pixels) {
             for (Pixel pixelObj : rowArray) {
-                int averages = pixelObj.getBlue() + pixelObj.getGreen() + pixelObj.getRed(); 
+                int averages = (pixelObj.getBlue() + pixelObj.getGreen() + pixelObj.getRed())/3; 
                 pixelObj.setBlue( averages);
                 pixelObj.setRed( averages);
                 pixelObj.setGreen( averages);
@@ -215,21 +215,55 @@ public class Picture extends SimplePicture {
 
     public void fixUnderwater(){
         Pixel[][] pixels = this.getPixels2D();
-        int Minn = pixels[0][0].getRed();
-        int Max = pixels[0][0].getRed();
-        int scale; 
+        int MinnRed = pixels[0][0].getRed();
+        int MaxRed = pixels[0][0].getRed();
+        double scaleRed; 
+
+        int MinnBlue = pixels[0][0].getBlue();
+        int MaxBlue = pixels[0][0].getBlue();
+        double scaleBlue; 
+
+        int MinnGreen = pixels[0][0].getGreen();
+        int MaxGreen = pixels[0][0].getGreen();
+        double scaleGreen; 
+
+
         //Find the lowest and higest red value 
         for (Pixel[] rowArray : pixels) {
             for (Pixel pixelObj : rowArray) {
-              if(pixelObj.getRed() > Max){
-                 Max = pixelObj.getRed();
+                // for thr red
+              if(pixelObj.getRed() > MaxRed){
+                 MaxRed = pixelObj.getRed();
               }  
-              if(pixelObj.getRed() < Minn){
-                Minn = pixelObj.getRed();
+              if(pixelObj.getRed() < MinnRed){
+                MinnRed = pixelObj.getRed();
              }  
+             // for thr blue
+             if(pixelObj.getBlue() > MaxBlue){
+                MaxBlue = pixelObj.getBlue();
+             }  
+             if(pixelObj.getBlue() < MinnBlue){
+               MinnRed = pixelObj.getBlue();
+            }  
+            // for thr Green
+            if(pixelObj.getGreen() > MaxGreen){
+                MaxGreen = pixelObj.getGreen();
+             }  
+             if(pixelObj.getGreen() < MinnGreen){
+               MinnGreen = pixelObj.getGreen();
+            }  
             }
         } 
-        scale = 255/(Max - Minn);
+        scaleRed = 255.0/(MaxRed - MinnRed);
+        scaleGreen = 255.0/(MaxGreen - MinnGreen);
+        scaleBlue = 255.0/(MaxBlue - MinnBlue);
+        for (Pixel[] rowArray : pixels) {
+            for (Pixel pixelObj : rowArray) {
+              pixelObj.setRed((int)((pixelObj.getRed() - MinnRed)*scaleRed));
+              pixelObj.setBlue((int)((pixelObj.getBlue() - MinnBlue)*scaleBlue));
+              pixelObj.setGreen((int)((pixelObj.getGreen() - MinnGreen)*scaleGreen));
+            }
+        } 
         
     }
 
