@@ -201,6 +201,26 @@ public class Picture extends SimplePicture {
         }   
     }
 
+    public void Black_White(){
+        Pixel[][] pixels = this.getPixels2D();
+        int name;
+        for (Pixel[] rowArray : pixels) {
+            for (Pixel pixelObj : rowArray) {
+                name = (pixelObj.getBlue() + pixelObj.getRed() + pixelObj.getGreen())/3;
+                if(name > 127){
+                    pixelObj.setBlue(255);
+                    pixelObj.setGreen(255);
+                    pixelObj.setRed(255);
+                }else{
+                    pixelObj.setBlue(0);
+                    pixelObj.setGreen(0);
+                    pixelObj.setRed(0);
+                }
+            }
+        }  
+       
+    }
+
     public void grayscale() {
         Pixel[][] pixels = this.getPixels2D();
         for (Pixel[] rowArray : pixels) {
@@ -271,7 +291,7 @@ public class Picture extends SimplePicture {
      * Method that mirrors the picture around a vertical mirror in the center of
      * the picture from left to right
      */
-    public void mirrorVertical() {
+    public void RightToLeft() {
         Pixel[][] pixels = this.getPixels2D();
         Pixel leftPixel = null;
         Pixel rightPixel = null;
@@ -285,23 +305,8 @@ public class Picture extends SimplePicture {
         }
     }
 
-    /**
-     *  Creates a vertical mirror image of the this picture.
-     */
-    public void verticalReflection() {
-        //TODO: Write this method.
-    }
-
-    /**
-     * Converts this image into a horizontal mirror image of itself.
-     */
-    public void horizontalReflection() {
-        //TODO: Write this method.
-    }
-
-    /**
-     * Mirror just part of a picture of a temple
-     */
+    
+    
     public void mirrorTemple() {
         int mirrorPoint = 276;
         Pixel leftPixel = null;

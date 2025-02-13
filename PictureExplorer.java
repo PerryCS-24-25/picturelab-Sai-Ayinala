@@ -405,6 +405,39 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
         if (a.getActionCommand().equals(Close.getActionCommand())){
             pictureFrame.dispose();
         }
+
+        if (a.getActionCommand().equals(Separate_Colors.getActionCommand())){
+            Picture newPic = new Picture((SimplePicture)picture);
+            newPic.keepOnlyBlue();
+            newPic.explore();
+            Picture Gimma = new Picture((SimplePicture)picture);
+            Gimma.keepOnlyRed();
+            Gimma.explore();
+            Picture lave = new Picture((SimplePicture)picture);
+            lave.keepOnlyGreen();
+            lave.explore();
+        }
+        
+        if (a.getActionCommand().equals(Invert_Color.getActionCommand())){
+            Picture smantha = new Picture((SimplePicture)picture);
+            smantha.negate();
+            smantha.explore();
+        } 
+
+        if (a.getActionCommand().equals(Greyscale.getActionCommand())){
+            Picture min = new Picture((SimplePicture)picture);
+            min.grayscale();
+            min.explore();
+        } 
+
+        if (a.getActionCommand().equals(Black_and_White.getActionCommand())){
+            Picture Bit = new Picture((SimplePicture)picture);
+            Bit.Black_White();
+            Bit.explore();
+        } 
+
+
+        
     }
 
     /**

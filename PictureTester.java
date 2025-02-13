@@ -31,7 +31,7 @@ public class PictureTester {
      * Method to test mirrorVertical
      */
     public static void testMirrorVertical() {
-        Picture caterpillar = new Picture("caterpillar.jpg");
+        Picture caterpillar = new Picture("beach.jpg");
         caterpillar.explore();
         caterpillar.mirrorVertical();
         caterpillar.explore();
@@ -118,7 +118,7 @@ public class PictureTester {
         //testKeepOnlyGreen();
         //testNegate();
         //testGrayscale();
-        testFixUnderwater();
+        //testFixUnderwater();
         //testMirrorVertical();
         //testMirrorTemple();
         //testMirrorArms();
