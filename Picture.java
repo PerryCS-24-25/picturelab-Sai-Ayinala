@@ -220,6 +220,7 @@ public class Picture extends SimplePicture {
         }  
        
     }
+    
 
     public void grayscale() {
         Pixel[][] pixels = this.getPixels2D();
