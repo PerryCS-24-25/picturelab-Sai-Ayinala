@@ -3,6 +3,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.awt.image.*;
 import javax.swing.border.*;
+import javax.swing.text.html.HTMLDocument.HTMLReader.BlockAction;
 
 /**
  * Displays a picture and lets you explore the picture by displaying the row,
@@ -165,6 +166,20 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
 
     private JMenuItem Close;
 
+
+
+    private JMenu Filter;
+
+    private JMenuItem Separate_Colors; 
+
+    private JMenuItem Invert_Color; 
+
+    private JMenuItem Greyscale;
+
+    private JMenuItem Black_and_White; 
+
+
+
     /**
      * Public constructor
      *
@@ -240,6 +255,11 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
         hundredFifty = new JMenuItem("150%");
         twoHundred = new JMenuItem("200%");
         fiveHundred = new JMenuItem("500%");
+        Filter = new JMenu("Filters");
+        Invert_Color = new JMenuItem("Invert Color");
+        Separate_Colors = new JMenuItem("Separate Colors"); 
+        Greyscale = new JMenuItem("Greyscale");
+        Black_and_White = new JMenuItem("Black and White");
 
         File = new JMenu("File");
         Open = new JMenuItem("Open");
@@ -257,6 +277,11 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
         Open.addActionListener(this);
         Save.addActionListener(this);
         Close.addActionListener(this);
+        Filter.addActionListener(this);
+        Invert_Color.addActionListener(this);
+        Separate_Colors.addActionListener(this);
+        Greyscale.addActionListener(this);
+        Black_and_White.addActionListener(this);
 
         // add the menu items to the menus
         File.add(Open);
@@ -271,6 +296,12 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
         zoomMenu.add(twoHundred);
         zoomMenu.add(fiveHundred);
         menuBar.add(zoomMenu);
+        menuBar.add(Filter);
+        Filter.add(Separate_Colors);
+        Filter.add(Invert_Color);
+        Filter.add(Greyscale);
+        Filter.add(Black_and_White);
+
         
       //actionPerformed
         // set the menu bar to this menu
