@@ -289,7 +289,20 @@ public class Picture extends SimplePicture {
     }
 
     public void topToBottom(){
-        
+        Pixel[][] pixels = this.getPixels2D();
+        System.out.println("hdhe3dh3edhi3edh3dh3iehd3i3e3i");
+        Pixel topPixel = null;
+        Pixel bottomPixel = null;
+        int width = pixels.length/2;
+        for (int row = 0; row < width; row++) {
+            System.out.println("!!!!!!!!!!!!!!!!!!!");
+            for (int col = 0; col < width; col++) {
+                System.out.println("YYYYYYYYYYYYYYYYYYYY");
+                topPixel = pixels[row][col];
+                bottomPixel = pixels[row][col];
+                topPixel.setColor(bottomPixel.getColor());
+            }
+        }
     }
 
     public void rightToLeft(){
