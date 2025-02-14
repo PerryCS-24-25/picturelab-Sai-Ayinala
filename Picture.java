@@ -288,11 +288,11 @@ public class Picture extends SimplePicture {
         
     }
 
-    /**
-     * Method that mirrors the picture around a vertical mirror in the center of
-     * the picture from left to right
-     */
-    public void RightToLeft() {
+    public void topToBottom(){
+        
+    }
+
+    public void rightToLeft(){
         Pixel[][] pixels = this.getPixels2D();
         Pixel leftPixel = null;
         Pixel rightPixel = null;
@@ -303,23 +303,26 @@ public class Picture extends SimplePicture {
                 rightPixel = pixels[row][width - 1 - col];
                 rightPixel.setColor(leftPixel.getColor());
             }
-        }
-    }
-
-    public void topToBottom(){
-     System.out.print("This Works"); 
-    }
-
-    public void rightToLeft(){
-        System.out.print("This Works");    
+        }  
     }
 
     public void bottomToTop(){
-        System.out.print("This Works"); 
+        
     }
 
     public void leftToRight(){
-        System.out.print("This Works"); 
+        Pixel[][] pixels = this.getPixels2D();
+        Pixel leftPixel = null;
+        Pixel rightPixel = null;
+        int width = pixels[0].length;
+        for (int row = 0; row < pixels.length; row++) {
+            for (int col = width/2; col < width; col++) {
+                leftPixel = pixels[row][(col - width) * -1];
+                rightPixel = pixels[row][col];
+                //leftPixel.setRed(255);
+                 leftPixel.setColor(rightPixel.getColor());
+            }
+        } 
     }
 
     
@@ -328,7 +331,6 @@ public class Picture extends SimplePicture {
         int mirrorPoint = 276;
         Pixel leftPixel = null;
         Pixel rightPixel = null;
-        //int count = 0;
         Pixel[][] pixels = this.getPixels2D();
 
         // loop through the rows
