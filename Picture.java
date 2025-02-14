@@ -306,13 +306,29 @@ public class Picture extends SimplePicture {
         }
     }
 
+    public void topToBottom(){
+     System.out.print("This Works"); 
+    }
+
+    public void rightToLeft(){
+        System.out.print("This Works");    
+    }
+
+    public void bottomToTop(){
+        System.out.print("This Works"); 
+    }
+
+    public void leftToRight(){
+        System.out.print("This Works"); 
+    }
+
     
     
     public void mirrorTemple() {
         int mirrorPoint = 276;
         Pixel leftPixel = null;
         Pixel rightPixel = null;
-        int count = 0;
+        //int count = 0;
         Pixel[][] pixels = this.getPixels2D();
 
         // loop through the rows

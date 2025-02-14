@@ -3,7 +3,6 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.awt.image.*;
 import javax.swing.border.*;
-import javax.swing.text.html.HTMLDocument.HTMLReader.BlockAction;
 
 /**
  * Displays a picture and lets you explore the picture by displaying the row,
@@ -178,6 +177,14 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
 
     private JMenuItem Black_and_White; 
 
+    private JMenuItem Top_to_Bottom; 
+    
+    private JMenuItem Right_to_Left; 
+
+    private JMenuItem Bottom_to_Top;
+
+    private JMenuItem Left_to_Right; 
+
 
 
     /**
@@ -255,11 +262,17 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
         hundredFifty = new JMenuItem("150%");
         twoHundred = new JMenuItem("200%");
         fiveHundred = new JMenuItem("500%");
+
         Filter = new JMenu("Filters");
         Invert_Color = new JMenuItem("Invert Color");
         Separate_Colors = new JMenuItem("Separate Colors"); 
         Greyscale = new JMenuItem("Greyscale");
         Black_and_White = new JMenuItem("Black and White");
+        Top_to_Bottom = new JMenuItem("Top to Bottom");
+        Right_to_Left = new JMenuItem("Right to Left");
+        Bottom_to_Top = new JMenuItem("Bottom to Top");
+        Left_to_Right = new JMenuItem("Left to Right");
+
 
         File = new JMenu("File");
         Open = new JMenuItem("Open");
@@ -282,6 +295,10 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
         Separate_Colors.addActionListener(this);
         Greyscale.addActionListener(this);
         Black_and_White.addActionListener(this);
+        Top_to_Bottom.addActionListener(this);
+        Right_to_Left.addActionListener(this);
+        Bottom_to_Top.addActionListener(this);
+        Left_to_Right.addActionListener(this);
 
         // add the menu items to the menus
         File.add(Open);
@@ -301,6 +318,10 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
         Filter.add(Invert_Color);
         Filter.add(Greyscale);
         Filter.add(Black_and_White);
+        Filter.add(Top_to_Bottom);
+        Filter.add(Right_to_Left);
+        Filter.add(Bottom_to_Top);
+        Filter.add(Left_to_Right);
 
         
       //actionPerformed
@@ -436,7 +457,29 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
             Bit.explore();
         } 
 
+        if (a.getActionCommand().equals(Top_to_Bottom.getActionCommand())){
+            Picture Bit = new Picture((SimplePicture)picture);
+            Bit.topToBottom();
+            Bit.explore();
+        }
 
+        if (a.getActionCommand().equals(Right_to_Left.getActionCommand())){
+            Picture Bit = new Picture((SimplePicture)picture);
+            Bit.rightToLeft();
+            Bit.explore();
+        }
+
+        if (a.getActionCommand().equals(Bottom_to_Top.getActionCommand())){
+            Picture Bit = new Picture((SimplePicture)picture);
+            Bit.bottomToTop();
+            Bit.explore();
+        }
+
+        if (a.getActionCommand().equals(Left_to_Right.getActionCommand())){
+            Picture Bit = new Picture((SimplePicture)picture);
+            Bit.leftToRight();
+            Bit.explore();
+        }
         
     }
 
