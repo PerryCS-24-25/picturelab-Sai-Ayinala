@@ -295,12 +295,10 @@ public class Picture extends SimplePicture {
         Pixel bottomPixel = null;
         int width = pixels.length/2;
         for (int row = 0; row < width; row++) {
-            System.out.println("!!!!!!!!!!!!!!!!!!!");
-            for (int col = 0; col < width; col++) {
-                System.out.println("YYYYYYYYYYYYYYYYYYYY");
+            for (int col = 0; col < pixels[0].length; col++) {
                 topPixel = pixels[row][col];
-                bottomPixel = pixels[row][col];
-                topPixel.setColor(bottomPixel.getColor());
+                bottomPixel = pixels[(width - row)*2 + row - 1][col];
+                bottomPixel.setColor(topPixel.getColor());
             }
         }
     }
@@ -320,7 +318,20 @@ public class Picture extends SimplePicture {
     }
 
     public void bottomToTop(){
-        
+        Pixel[][] pixels = this.getPixels2D();
+        System.out.println("hdhe3dh3edhi3edh3dh3iehd3i3e3i");
+        Pixel topPixel = null;
+        Pixel bottomPixel = null;
+        int width = pixels.length/2;
+        for (int row = width; row < pixels.length; row++) {
+            for (int col = 0; col < pixels[0].length; col++) {
+                //System.out.println(width - row);
+                //System.out.println(width - (width - row));
+                topPixel = pixels[width - ( row - width)][col];
+                bottomPixel = pixels[row][col];
+                topPixel.setColor(bottomPixel.getColor());
+            }
+        }   
     }
 
     public void leftToRight(){
